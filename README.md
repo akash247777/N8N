@@ -5,6 +5,10 @@ This project automates **prescription refill reminders** using [n8n](https://n8n
 
 ---
 
+
+https://github.com/user-attachments/assets/f419d2e0-0dc8-452a-9dde-6ad1a3c3c9d0
+
+
 ## 🔧 Features
 
 ✅ Automatically runs every day at 9:00 AM  
