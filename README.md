@@ -5,9 +5,9 @@ This project automates **prescription refill reminders** using [n8n](https://n8n
 
 ---
 
+# Demo 🎞📽🎥
 
-https://github.com/user-attachments/assets/f419d2e0-0dc8-452a-9dde-6ad1a3c3c9d0
-
+https://github.com/user-attachments/assets/588b505e-ae76-43d7-8550-26baeccad9ba
 
 ## 🔧 Features
 
