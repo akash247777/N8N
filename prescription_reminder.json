@@ -1,0 +1,219 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "={{$json[\"telegram_chat_id\"]}}",
+        "text": "=🩺 Hello {{$json[\"patient_name\"]}},\nThis is a reminder to refill your prescription:\n\n💊 {{$json[\"medicine_name\"]}}\n💡 Dosage: {{$json[\"dosage\"]}}\n\nVisit Apollo Pharmacy or order online.\nStay healthy!\n\n🔗 https://www.apollo247.com/",
+        "additionalFields": {}
+      },
+      "id": "3a928e12-9104-4214-9386-298c16d91940",
+      "name": "Send Telegram Message",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        304,
+        464
+      ],
+      "webhookId": "511e1478-8b45-4ea1-8a25-a35180c5de84",
+      "credentials": {
+        "telegramApi": {
+          "id": "CQI9JBpm10csBvZi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 9
+            }
+          ]
+        }
+      },
+      "id": "d7a69395-9428-43da-a2ea-c0fab69c6296",
+      "name": "Cron Trigger1",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        464
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM prescriptions WHERE DATE_ADD(purchase_date, INTERVAL refill_interval DAY) <= CURDATE() AND reminder_sent = 0;",
+        "options": {}
+      },
+      "id": "3940a02d-fa4d-4d5a-98e3-dd2b8ed984cd",
+      "name": "Fetch Prescriptions1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2,
+      "position": [
+        -256,
+        464
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "ILl9MxSHrju1x9BQ",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "your-email@example.com",
+        "toEmail": "={{$json[\"email\"]}}",
+        "subject": "Prescription Refill Reminder – Apollo Pharmacy",
+        "html": "=Hello {{$json[\"patient_name\"]}},<br><br>\nThis is a reminder to refill your prescription:<br>\n<b>Medicine:</b> {{$json[\"medicine_name\"]}}<br>\n<b>Dosage:</b> {{$json[\"dosage\"]}}<br><br>\nPlease visit your nearest Apollo Pharmacy</a> or order online.<br><br>\n<a href=\"https://www.apollo247.com/\">Order Online at Apollo247</a> \n<br>Stay healthy!<br>\nApollo Pharmacy",
+        "options": {}
+      },
+      "id": "a16b9039-7f34-48a6-8804-9012e7eb5630",
+      "name": "Send Email1",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        304,
+        304
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "jGfJE3yJycttEd2Q",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE prescriptions SET reminder_sent = 1 WHERE id = {{$json[\"id\"]}};",
+        "options": {}
+      },
+      "id": "ee3c7118-b69c-48b7-b200-52f725884cd0",
+      "name": "Mark as Sent1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2,
+      "position": [
+        304,
+        880
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "ILl9MxSHrju1x9BQ",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f5eaf9ee-badc-4008-a10f-5d44621dbe05",
+              "name": "id",
+              "value": "={{$json[\"id\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -48,
+        464
+      ],
+      "id": "1022d566-df1c-411a-a297-f93fd3a4a050",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "recipientPhoneNumber": "={{$json[\"Whatsappnumber\"]}}",
+        "textBody": "=🩺 Hello {{$json[\"patient_name\"]}}, This is a reminder to refill your prescription:  💊 {{$json[\"medicine_name\"]}} 💡 Dosage: {{$json[\"dosage\"]}}  Visit Apollo Pharmacy or order online. Stay healthy!  🔗 https://www.apollo247.com/",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        304,
+        672
+      ],
+      "id": "6be427f3-2b90-4b59-a9f8-4d8beb6a1026",
+      "name": "Send message",
+      "webhookId": "4f135144-31a0-40e6-bb83-b6d52e5a94f5"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Cron Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Fetch Prescriptions1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Prescriptions1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Telegram Message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mark as Sent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Telegram Message": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "514562eb-9588-40c2-bf1a-b729b41e1435",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d8810ef8bdae11a6b0bf0e391b1f8b9f6508acfe8105391a1eac0300a9f36f00"
+  },
+  "id": "fT4onXMe2llii4qw",
+  "tags": []
+}
