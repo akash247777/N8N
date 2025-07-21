@@ -50,6 +50,7 @@ By deploying this system:
 [ Email ] [ WhatsApp ] [ Telegram ] [ Update reminder_sent in MySQL ]
 
 ---
+<img width="1920" height="1035" alt="image" src="https://github.com/user-attachments/assets/028138d9-cd87-4cf4-b4e3-e3eb0671275b" />
 
 ## 🧱 Requirements
 
