@@ -22,9 +22,9 @@ https://github.com/user-attachments/assets/588b505e-ae76-43d7-8550-26baeccad9ba
 
 ---
 
-## 🏥 How This Helped Apollo Pharmacies
+## 🏥 How This Helped Pharmacies
 
-Apollo Pharmacies handles **millions of prescriptions monthly**. Previously, many patients would forget to refill their medicines on time, risking treatment lapses.
+Pharmacies handles **millions of prescriptions monthly**. Previously, many patients would forget to refill their medicines on time, risking treatment lapses.
 
 By deploying this system:
 
@@ -33,7 +33,7 @@ By deploying this system:
 - 💬 Boosted engagement through multichannel messaging  
 - 💸 Saved operational costs by automating reminders
 
-> 🧠 This project became a crucial part of Apollo's patient engagement automation pipeline.
+> 🧠 This project became a crucial part of patient engagement automation pipeline.
 
 ---
 
@@ -99,9 +99,9 @@ This is a reminder to refill your prescription:<br>
 <b>Medicine:</b> {{$json["medicine_name"]}}<br>
 <b>Dosage:</b> {{$json["dosage"]}}<br><br>
 Please visit your nearest Apollo Pharmacy</a> or order online.<br><br>
-<a href="https://www.apollo247.com/">Order Online at Apollo247</a> 
+<a href="https://www.example.com/">Order Online at Apollo247</a> 
 <br>Stay healthy!<br>
-Apollo Pharmacy
+Pharmacy
 ```
 
 # WhatsApp / Telegram
@@ -113,8 +113,8 @@ This is a reminder to refill your prescription:
 💊 {{$json["medicine_name"]}}
 💡 Dosage: {{$json["dosage"]}}
 
-Visit Apollo Pharmacy or order online.
+Visit Pharmacy or order online.
 Stay healthy!
 
-🔗 https://www.apollo247.com/
+🔗 https://www.example.com/
 ```
