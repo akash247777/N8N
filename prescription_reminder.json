@@ -4,7 +4,7 @@
     {
       "parameters": {
         "chatId": "={{$json[\"telegram_chat_id\"]}}",
-        "text": "=🩺 Hello {{$json[\"patient_name\"]}},\nThis is a reminder to refill your prescription:\n\n💊 {{$json[\"medicine_name\"]}}\n💡 Dosage: {{$json[\"dosage\"]}}\n\nVisit Apollo Pharmacy or order online.\nStay healthy!\n\n🔗 https://www.apollo247.com/",
+        "text": "=🩺 Hello {{$json[\"patient_name\"]}},\nThis is a reminder to refill your prescription:\n\n💊 {{$json[\"medicine_name\"]}}\n💡 Dosage: {{$json[\"dosage\"]}}\n\nVisit Pharmacy or order online.\nStay healthy!\n\n🔗 https://www.example.com/",
         "additionalFields": {}
       },
       "id": "3a928e12-9104-4214-9386-298c16d91940",
@@ -68,7 +68,7 @@
         "fromEmail": "your-email@example.com",
         "toEmail": "={{$json[\"email\"]}}",
         "subject": "Prescription Refill Reminder – Apollo Pharmacy",
-        "html": "=Hello {{$json[\"patient_name\"]}},<br><br>\nThis is a reminder to refill your prescription:<br>\n<b>Medicine:</b> {{$json[\"medicine_name\"]}}<br>\n<b>Dosage:</b> {{$json[\"dosage\"]}}<br><br>\nPlease visit your nearest Apollo Pharmacy</a> or order online.<br><br>\n<a href=\"https://www.apollo247.com/\">Order Online at Apollo247</a> \n<br>Stay healthy!<br>\nApollo Pharmacy",
+        "html": "=Hello {{$json[\"patient_name\"]}},<br><br>\nThis is a reminder to refill your prescription:<br>\n<b>Medicine:</b> {{$json[\"medicine_name\"]}}<br>\n<b>Dosage:</b> {{$json[\"dosage\"]}}<br><br>\nPlease visit your nearest Pharmacy</a> or order online.<br><br>\n<a href=\"https://www.apollo247.com/\">Order Online at </a> \n<br>Stay healthy!<br>\n Pharmacy",
         "options": {}
       },
       "id": "a16b9039-7f34-48a6-8804-9012e7eb5630",
@@ -135,7 +135,7 @@
       "parameters": {
         "operation": "send",
         "recipientPhoneNumber": "={{$json[\"Whatsappnumber\"]}}",
-        "textBody": "=🩺 Hello {{$json[\"patient_name\"]}}, This is a reminder to refill your prescription:  💊 {{$json[\"medicine_name\"]}} 💡 Dosage: {{$json[\"dosage\"]}}  Visit Apollo Pharmacy or order online. Stay healthy!  🔗 https://www.apollo247.com/",
+        "textBody": "=🩺 Hello {{$json[\"patient_name\"]}}, This is a reminder to refill your prescription:  💊 {{$json[\"medicine_name\"]}} 💡 Dosage: {{$json[\"dosage\"]}}  Visit Apollo Pharmacy or order online. Stay healthy!  🔗 https://www.exampple.com/",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.whatsApp",
