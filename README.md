@@ -99,7 +99,7 @@ This is a reminder to refill your prescription:<br>
 <b>Medicine:</b> {{$json["medicine_name"]}}<br>
 <b>Dosage:</b> {{$json["dosage"]}}<br><br>
 Please visit your nearest Apollo Pharmacy</a> or order online.<br><br>
-<a href="https://www.example.com/">Order Online at Apollo247</a> 
+<a href="https://www.example.com/">Order Online at </a> 
 <br>Stay healthy!<br>
 Pharmacy
 ```
