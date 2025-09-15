@@ -81,7 +81,7 @@ CREATE TABLE prescriptions (
 ## 🚀 Setup Instructions
 
 1. Clone this repo
-2.Import the provided prescription_reminder.json into n8n
+2. Import the provided prescription_reminder.json into n8n
 3. Add your credentials in n8n:
  - MySQL 
  - SMTP
